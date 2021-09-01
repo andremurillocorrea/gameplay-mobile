@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
         color: theme.colors.heading,
         flex: 1,
         fontSize: 15,
-        paddingHorizontal: 40
+        paddingHorizontal: 40,
+        fontFamily: theme.fonts.text500
     }
 });
