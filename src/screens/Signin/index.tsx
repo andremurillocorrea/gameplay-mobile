@@ -1,12 +1,30 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
 import { styles } from './styles';
 
 import IllustrationImg from '../../assets/illustration.png';
 import { ButtonIcon } from '../../components/ButtonIcon';
 
+type RootStackParamList = {
+    Home: undefined,
+    Signin: undefined
+};
+
+declare global {
+    namespace ReactNavigation {
+      interface RootParamList extends RootStackParamList {}
+    }
+  }
+
 export function Signin() {
+    const navigation = useNavigation();
+
+    function handleSignin() {
+        navigation.navigate('Home');
+    }
+
     return (
         <View style={styles.container}>
             <Image 
@@ -27,7 +45,11 @@ export function Signin() {
                     favoritos com seus amigos
                 </Text>
 
-                <ButtonIcon title='Entrar com Discord' activeOpacity={0.7}/>
+                <ButtonIcon 
+                    title='Entrar com Discord' 
+                    activeOpacity={0.7}
+                    onPress={handleSignin}
+                />
             </View>
         </View>
     );

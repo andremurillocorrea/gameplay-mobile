@@ -7,8 +7,7 @@ import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhan
 
 import { Background } from './src/components/Background';
 
-import { Signin } from './src/screens/Signin';
-import { Home } from './src/screens/Home';
+import { Routes } from './src/routes';
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -31,7 +30,7 @@ export default function App() {
                 backgroundColor='transparent'
                 translucent
             />
-            <Home />
+            <Routes />
         </Background>
     );
 }
