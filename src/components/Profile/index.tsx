@@ -24,8 +24,6 @@ export function Profile() {
                     Hoje é dia de vitória
                 </Text>
             </View>
-            {/* <Button /> */}
-
         </View>
     );
 }
