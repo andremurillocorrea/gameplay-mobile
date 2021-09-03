@@ -3,6 +3,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { Home } from '../screens/Home';
 import { Signin } from '../screens/Signin';
+import { AppointmentDetails } from '../screens/AppointmentDetails';
+
+type RootStackParamList = {
+    Home: undefined,
+    Signin: undefined,
+    AppointmentDetails: undefined
+};
+
+declare global {
+    namespace ReactNavigation {
+      interface RootParamList extends RootStackParamList {}
+    }
+  }
 
 export function AuthRoutes() {
     const { Navigator, Screen } = createNativeStackNavigator();
@@ -10,10 +23,7 @@ export function AuthRoutes() {
     return (
         <Navigator
             screenOptions={{
-                headerShown: false,
-                contentStyle: {
-                    backgroundColor: 'transparent'
-                }
+                headerShown: false
             }}
         >
             <Screen
@@ -23,6 +33,10 @@ export function AuthRoutes() {
             <Screen
                 name='Home'
                 component={Home} 
+            />
+            <Screen
+                name='AppointmentDetails'
+                component={AppointmentDetails} 
             />
         </Navigator>
     );

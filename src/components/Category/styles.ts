@@ -17,26 +17,28 @@ export const styles = StyleSheet.create({
         backgroundColor: theme.colors.secondary40,
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingVertical: 7
+        paddingVertical: 20
     }, title: {
         color: theme.colors.heading,
-        fontFamily: theme.fonts.title500,
+        fontFamily: theme.fonts.title700,
         fontSize: 15
     }, check: {
         width: 10,
         height: 10,
-        alignSelf: 'flex-end',
         borderRadius: 3,
         backgroundColor: theme.colors.secondary100,
         borderColor:theme.colors.secondary50,
         borderWidth: 2,
-        marginRight: 7,
+        position: 'absolute',
+        top: 7,
+        right: 7
     }, checked: {
         width: 10,
         height: 10,
-        alignSelf: 'flex-end',
         borderRadius: 3,
         backgroundColor: theme.colors.primary,
-        marginRight: 7,
+        position: 'absolute',
+        top: 7,
+        right: 7
     }
 })

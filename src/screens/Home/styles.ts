@@ -16,6 +16,6 @@ export const styles = StyleSheet.create({
     content: {
         flex: 1, 
         paddingHorizontal: 24, 
-        marginTop: 40, 
+        marginTop: 16, 
     }
 });
