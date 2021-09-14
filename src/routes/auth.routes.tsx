@@ -4,11 +4,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '../screens/Home';
 import { Signin } from '../screens/Signin';
 import { AppointmentDetails } from '../screens/AppointmentDetails';
+import { AppointmentCreate } from '../screens/AppointmentCreate';
 
 type RootStackParamList = {
     Home: undefined,
     Signin: undefined,
-    AppointmentDetails: undefined
+    AppointmentDetails: undefined,
+    AppointmentCreate: undefined,
 };
 
 declare global {
@@ -37,6 +39,10 @@ export function AuthRoutes() {
             <Screen
                 name='AppointmentDetails'
                 component={AppointmentDetails} 
+            />
+            <Screen
+                name='AppointmentCreate'
+                component={AppointmentCreate} 
             />
         </Navigator>
     );

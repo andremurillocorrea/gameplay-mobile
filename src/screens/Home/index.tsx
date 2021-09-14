@@ -60,8 +60,12 @@ export function Home() {
         categoryId === category ? setCategory('') : setCategory(categoryId);
     }
 
-    function handleAppointmentSelet() {
+    function handleAppointmentSelect() {
         navigation.navigate('AppointmentDetails');
+    }
+
+    function handleAppointmentCreate() {
+        navigation.navigate('AppointmentCreate');
     }
 
     return (
@@ -69,7 +73,9 @@ export function Home() {
             <View style={styles.container}>
                 <View style={styles.header} >
                     <Profile />
-                    <ButtonAdd />
+                    <ButtonAdd 
+                        onPress={handleAppointmentCreate}
+                    />
                 </View>
 
                 <CategorySelect 
@@ -87,7 +93,7 @@ export function Home() {
                             return (
                                 <Appointment 
                                     item={item}
-                                    onPress={handleAppointmentSelet}
+                                    onPress={handleAppointmentSelect}
                                 />
                             )
                         }}

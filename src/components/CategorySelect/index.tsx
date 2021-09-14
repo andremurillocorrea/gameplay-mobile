@@ -19,10 +19,6 @@ export function CategorySelect({ categorySelected, setCategory, hasCheckBox = fa
             style={styles.container}
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-                paddingLeft: 24,
-                paddingRight: 16
-            }} // se desse um padding horizontal no style da view, não funcionaria no final do scroll
         >   
             {
                 categories.map(category => {
