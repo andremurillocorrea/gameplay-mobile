@@ -10,13 +10,6 @@ export const styles = StyleSheet.create({
     content: {
         paddingHorizontal: 24,
     },
-    label: {
-        fontFamily: theme.fonts.title700,
-        fontSize: 18,
-        color: theme.colors.heading,
-        marginBottom: 12,
-        marginTop: 28,
-    },
     serverContainer:{
         flexDirection: 'row',
         alignItems: 'center',
@@ -27,7 +20,6 @@ export const styles = StyleSheet.create({
         borderColor: theme.colors.secondary60,
         borderWidth: 1,
         borderRadius: 8,
-        marginTop: 32,
         paddingRight: 28 
         // overflow: 'hidden'
     },
@@ -57,18 +49,6 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 8,
         paddingLeft: 16,
-    },
-    textAreaHeader:{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    maxCaracters: {
-        fontFamily: theme.fonts.text500,
-        fontSize: 13,
-        color: theme.colors.highlight,
-        marginBottom: 12,
-        marginTop: 28,
     },
     textAreaInput: {
         backgroundColor: theme.colors.secondary80,

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import { Background } from '../../components/Background';
-import { Header } from '../../components/Header';
 import { Entypo } from '@expo/vector-icons'
 
+import { Background } from '../../components/Background';
+import { Header } from '../../components/Header';
+import { CategorySelect } from '../../components/CategorySelect';
+import { Button } from '../../components/Button';
+import { FormElement } from '../../components/FormElement';
 
 import { styles } from './styles';
 import { theme } from '../../global/styles/theme';
-import { CategorySelect } from '../../components/CategorySelect';
-import { Button } from '../../components/Button';
+
 
 export function AppointmentCreate() {
     const [category, setCategory] = useState('');
@@ -31,78 +33,65 @@ export function AppointmentCreate() {
                     style={styles.content}
                     showsVerticalScrollIndicator={false}
                 >
-                    <Text style={styles.label}>
-                        Categoria
-                    </Text>
+                    <FormElement title='Categoria'>
+                        <CategorySelect
+                            hasCheckBox
+                            categorySelected={category}
+                            setCategory={handleCategorySelect}
+                        />
+                    </FormElement>
 
-                    <CategorySelect
-                        hasCheckBox
-                        categorySelected={category}
-                        setCategory={handleCategorySelect}
-                    />
+                    <FormElement>
+                        <RectButton>
+                            <View style={styles.serverContainer}>
+                                <View style={styles.iconHolder}>
 
-                    <RectButton>
-                        <View style={styles.serverContainer}>
-                            <View style={styles.iconHolder}>
+                                </View>
+                                <Text style={styles.serverText}>
+                                    Selecione um servidor
+                                </Text>
+                                <Entypo
+                                    name='chevron-right'
+                                    size={18}
+                                    color={theme.colors.heading} 
+                                />
 
                             </View>
-                            <Text style={styles.serverText}>
-                                Selecione um servidor
-                            </Text>
-                            <Entypo
-                                name='chevron-right'
-                                size={18}
-                                color={theme.colors.heading} 
-                            />
-
-                        </View>
-                    </RectButton>
+                        </RectButton>
+                    </FormElement>
 
                     <View style={styles.dateContainer}>
-                        <View>
-                            <Text style={styles.label}>
-                                Dia e mês
-                            </Text>
-
+                        <FormElement title='Dia e mês'>
                             <TextInput 
                                 style={styles.input}
                                 placeholder='dd/mm'
                                 placeholderTextColor={theme.colors.highlight}
                             />
-                        </View>
+                        </FormElement>
 
-                        <View>
-                            <Text style={styles.label}>
-                                Horário
-                            </Text>
-
+                        <FormElement title='Horário'>
                             <TextInput 
                                 style={styles.input}
                                 placeholder='hh:mm'
                                 placeholderTextColor={theme.colors.highlight}
                             />
+                        </FormElement>
+                    </View>
+
+                    <FormElement title='Descrição' subtitle='Max 100 caracteres'>
+                        <View>
+                            <TextInput 
+                                style={styles.textAreaInput}
+                            />
                         </View>
-                    </View>
-
-                    <View style={styles.textAreaHeader}>
-                        <Text style={styles.label}>
-                            Descrição
-                        </Text>
                         
-                        <Text style={styles.maxCaracters}>
-                            Max 100 caracteres
-                        </Text>
-                    </View>
-
-                    <TextInput 
-                        style={styles.textAreaInput}
-                    />
+                    </FormElement>
 
                     <View style={styles.footer}>
                         <Button
                             title='Agendar'
                         />
-                    </View>
+                    </View>             
                 </ScrollView>
             </KeyboardAvoidingView>
         </Background>
