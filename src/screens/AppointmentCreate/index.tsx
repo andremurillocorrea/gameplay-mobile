@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, ScrollView, KeyboardAvoidingView, Platform, Modal } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { Entypo } from '@expo/vector-icons'
+
+import { GuildList } from '../GuildList';
 
 import { Background } from '../../components/Background';
 import { Header } from '../../components/Header';
@@ -9,15 +11,25 @@ import { CategorySelect } from '../../components/CategorySelect';
 import { Button } from '../../components/Button';
 import { FormElement } from '../../components/FormElement';
 
+import { GuildProps } from '../../components/Guild';
+
 import { styles } from './styles';
 import { theme } from '../../global/styles/theme';
+import { GuildIcon } from '../../components/GuildIcon';
 
 
 export function AppointmentCreate() {
     const [category, setCategory] = useState('');
+    const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+    const [guildModalVisible, setGuildModalVisible] = useState(false);
 
     function handleCategorySelect(categoryId : string) {
         categoryId === category ? setCategory('') : setCategory(categoryId);
+    }
+
+    function handleGuildSelect(item: GuildProps) {
+        setGuild(item)
+        setGuildModalVisible(false);
     }
 
     return (
@@ -42,13 +54,15 @@ export function AppointmentCreate() {
                     </FormElement>
 
                     <FormElement>
-                        <RectButton>
+                        <RectButton
+                            onPress={() => setGuildModalVisible(true)}
+                        >
                             <View style={styles.serverContainer}>
                                 <View style={styles.iconHolder}>
-
+                                    {guild.icon_uri && <GuildIcon icon_uri={guild.icon_uri}/>}
                                 </View>
                                 <Text style={styles.serverText}>
-                                    Selecione um servidor
+                                    {guild.name ? guild.name : 'Selecione um servidor'}
                                 </Text>
                                 <Entypo
                                     name='chevron-right'
@@ -94,6 +108,17 @@ export function AppointmentCreate() {
                     </View>             
                 </ScrollView>
             </KeyboardAvoidingView>
+
+            <Modal 
+                transparent 
+                visible={guildModalVisible}
+                animationType='slide'
+            >
+                <GuildList 
+                    handleGuildSelect={handleGuildSelect}
+                />
+
+            </Modal>
         </Background>
     );
 }

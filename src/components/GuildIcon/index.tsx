@@ -3,13 +3,17 @@ import { View, Image } from 'react-native';
 
 import { styles } from './styles';
 
-export function GuildIcon() {
+type Props = {
+    icon_uri: string
+}
+
+export function GuildIcon({icon_uri}: Props) {
     return (
         <View style={styles.container}>
             <Image 
                 style={styles.image}
-                source={{uri: 'https://static.wikia.nocookie.net/leagueoflegends/images/0/07/League_of_Legends_icon.png/revision/latest/smart/width/250/height/250?cb=20191018194326'}} 
-                resizeMode='cover'    
+                source={{uri: icon_uri}} 
+                resizeMode='cover'   
             />
         </View>
     );

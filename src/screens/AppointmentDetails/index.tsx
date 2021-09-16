@@ -75,6 +75,7 @@ export function AppointmentDetails() {
                             return <Player item={item} />
                         }}
                         ItemSeparatorComponent={ListDivider}
+                        showsVerticalScrollIndicator={false}
                     />
                 </View>
 

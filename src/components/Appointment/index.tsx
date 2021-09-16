@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
 import { GuildIcon } from '../GuildIcon';
+import { GuildProps } from '../Guild';
 
 import CalendarSvg from '../../assets/calendar.svg';
 import PlayerSvg from '../../assets/player.svg';
@@ -10,12 +11,6 @@ import PlayerSvg from '../../assets/player.svg';
 import { styles } from './styles';
 import { theme } from '../../global/styles/theme';
 
-
-type GuildProps = {
-    id: string,
-    title: string,
-    game: string, 
-}
 
 type AppointementProps = {
     id: string,
@@ -33,11 +28,11 @@ export function Appointment( { item, ...rest }: Props ) {
     return (
         <RectButton {...rest}>
             <View style={styles.container}>
-                <GuildIcon />
+                <GuildIcon icon_uri={item.guild.icon_uri}/>
                 <View style={styles.content}>
                     <View style={styles.header}>
                         <Text style={styles.title}>
-                            { item.guild.title }
+                            { item.guild.name }
                         </Text>
 
                         <Text style={styles.category}>
