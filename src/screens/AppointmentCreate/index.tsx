@@ -27,9 +27,13 @@ export function AppointmentCreate() {
         categoryId === category ? setCategory('') : setCategory(categoryId);
     }
 
+    function closeModal() {
+        setGuildModalVisible(false)
+    }
+
     function handleGuildSelect(item: GuildProps) {
         setGuild(item)
-        setGuildModalVisible(false);
+        closeModal();
     }
 
     return (
@@ -116,6 +120,7 @@ export function AppointmentCreate() {
             >
                 <GuildList 
                     handleGuildSelect={handleGuildSelect}
+                    closeModal={closeModal}
                 />
 
             </Modal>

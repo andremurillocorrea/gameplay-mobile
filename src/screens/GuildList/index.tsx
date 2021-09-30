@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, TouchableWithoutFeedback } from 'react-native';
 
 import { Background } from '../../components/Background';
 import { Guild, GuildProps } from '../../components/Guild';
@@ -13,34 +13,36 @@ const guildList = [
 ]
 
 type Props = {
-    handleGuildSelect: (item: GuildProps) => void
+    handleGuildSelect: (item: GuildProps) => void,
+    closeModal: () => void
 }
 
-export function GuildList({handleGuildSelect}: Props) {
+export function GuildList({handleGuildSelect, closeModal}: Props) {
     return (
         
-        <View style={styles.container}>
-            <Background>
-                <View style={styles.header}>
-                    <View style={styles.bar}>
+        <TouchableWithoutFeedback onPress={closeModal}>
+            <View style={styles.container}>
+                <Background>
+                    <View style={styles.header}>
+                        <View style={styles.bar}>
+
+                        </View>
+                    </View>
+                    <View style={styles.content}>
+                        <FlatList 
+                            data={guildList}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({item}) => <Guild 
+                                guild={item}
+                                onPress={() => handleGuildSelect(item)}
+                                />}
+                            ItemSeparatorComponent={() => <ListDivider />}
+                        />
+
 
                     </View>
-                </View>
-                <View style={styles.content}>
-                    <FlatList 
-                        data={guildList}
-                        keyExtractor={(item) => item.id}
-                        renderItem={({item}) => <Guild 
-                            guild={item}
-                            onPress={() => handleGuildSelect(item)}
-                            />}
-                        ItemSeparatorComponent={() => <ListDivider />}
-                    />
-
-
-                </View>
-            </Background>
-        </View>
-        
+                </Background>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
