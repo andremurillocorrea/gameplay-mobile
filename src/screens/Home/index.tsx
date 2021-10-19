@@ -11,9 +11,12 @@ import { Appointment } from '../../components/Appointment';
 import { ListDivider } from '../../components/ListDivider';
 import { Background } from '../../components/Background';
 
+import { useAuth } from '../../hooks/auth';
+
 import { categories } from '../../utils/categories';
 
 import { styles } from './styles';
+
 
 
 
@@ -46,6 +49,7 @@ const appointments = [
 
 export function Home() {
     const [category, setCategory] = useState('');
+    const { user } = useAuth();
 
     const navigation = useNavigation();
 
@@ -67,6 +71,7 @@ export function Home() {
     }
 
     function handleAppointmentCreate() {
+        console.log(user)
         navigation.navigate('AppointmentCreate');
     }
 
