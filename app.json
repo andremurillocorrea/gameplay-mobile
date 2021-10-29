@@ -3,6 +3,7 @@
     "name": "gameplay-mobile",
     "slug": "gameplay-mobile",
     "version": "1.0.0",
+    "scheme": "gameplay-mobile",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

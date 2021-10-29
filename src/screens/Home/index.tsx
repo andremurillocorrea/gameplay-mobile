@@ -48,8 +48,9 @@ const appointments = [
 ]
 
 export function Home() {
-    const [category, setCategory] = useState('');
     const { user } = useAuth();
+    
+    const [category, setCategory] = useState('');
 
     const navigation = useNavigation();
 
@@ -71,7 +72,7 @@ export function Home() {
     }
 
     function handleAppointmentCreate() {
-        console.log(user)
+
         navigation.navigate('AppointmentCreate');
     }
 
